@@ -1,15 +1,17 @@
 package by.antonadezhuk.twodo.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity
 @Table(name = "tag")
-@Data @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Tag {
     @Id
     @Column(name = "id")
@@ -17,6 +19,7 @@ public class Tag {
     private int id;
 
     @Column(name = "name")
+    @EqualsAndHashCode.Include
     private String name;
 
     @ManyToMany(mappedBy = "tags")

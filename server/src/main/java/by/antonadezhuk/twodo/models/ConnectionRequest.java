@@ -1,18 +1,25 @@
 package by.antonadezhuk.twodo.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "connection_request")
-@Data @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ConnectionRequest {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "sent_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date sentAt;
 
     @ManyToOne
     @JoinColumn(name = "sender_id", referencedColumnName = "id")
