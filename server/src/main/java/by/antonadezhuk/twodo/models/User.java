@@ -5,9 +5,7 @@ import by.antonadezhuk.twodo.utils.PointJsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.locationtech.jts.geom.Point;
 
 import java.util.Date;
@@ -16,7 +14,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user")
-@Data @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
     @Id
     @Column(name = "id")
@@ -24,6 +26,7 @@ public class User {
     private int id;
 
     @Column(name = "email")
+    @EqualsAndHashCode.Include
     private String email;
 
     @Column(name = "password")
