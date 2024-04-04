@@ -1,7 +1,6 @@
 import { View, Text } from 'react-native';
-import React from 'react';
 
-const DiscoverScreen = () => {
+const Discover = () => {
   return (
     <View>
       <Text>Discover screen</Text>
@@ -9,4 +8,4 @@ const DiscoverScreen = () => {
   );
 };
 
-export default DiscoverScreen;
+export default Discover;

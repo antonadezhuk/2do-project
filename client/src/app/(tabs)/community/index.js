@@ -1,7 +1,6 @@
 import { View, Text } from 'react-native';
-import React from 'react';
 
-const CommunityScreen = () => {
+const Community = () => {
   return (
     <View>
       <Text>Community screen</Text>
@@ -9,4 +8,4 @@ const CommunityScreen = () => {
   );
 };
 
-export default CommunityScreen;
+export default Community;

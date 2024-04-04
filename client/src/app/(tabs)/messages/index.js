@@ -1,7 +1,6 @@
 import { View, Text } from 'react-native';
-import React from 'react';
 
-const MessagesScreen = () => {
+const Messages = () => {
   return (
     <View>
       <Text>Messages screen</Text>
@@ -9,4 +8,4 @@ const MessagesScreen = () => {
   );
 };
 
-export default MessagesScreen;
+export default Messages;
