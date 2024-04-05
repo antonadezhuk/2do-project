@@ -1,9 +1,9 @@
 import { Stack } from 'expo-router';
 
-export default () => {
-  return (
-    <Stack>
-      <Stack.Screen name="index" options={{ title: 'Messages' }} />
-    </Stack>
-  );
-};
+const MessagesLayout = () => (
+  <Stack>
+    <Stack.Screen name="index" options={{ title: 'Messages' }} />
+  </Stack>
+);
+
+export default MessagesLayout;

@@ -1,9 +1,9 @@
 import { Stack } from 'expo-router';
 
-export default () => {
-  return (
-    <Stack>
-      <Stack.Screen name="index" options={{ title: 'Discover' }} />
-    </Stack>
-  );
-};
+const DiscoverLayout = () => (
+  <Stack>
+    <Stack.Screen name="index" options={{ title: 'Discover' }} />
+  </Stack>
+);
+
+export default DiscoverLayout;

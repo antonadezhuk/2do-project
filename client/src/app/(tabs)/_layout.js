@@ -6,36 +6,40 @@ const { Navigator } = createMaterialBottomTabNavigator();
 
 const Tabs = withLayoutContext(Navigator);
 
-export default () => {
-  return (
-    <Tabs
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color }) => {
-          let iconName;
+const getTabBarIcon = (route, focused, color) => {
+  let iconName;
 
-          switch (route.name) {
-            case 'discover':
-              iconName = focused ? 'compass' : 'compass-outline';
-              break;
-            case 'community':
-              iconName = focused ? 'account-group' : 'account-group-outline';
-              break;
-            case 'messages':
-              iconName = focused ? 'chat' : 'chat-outline';
-              break;
-            case 'profile':
-              iconName = focused ? 'account' : 'account-outline';
-              break;
-          }
+  switch (route.name) {
+    case 'discover':
+      iconName = focused ? 'compass' : 'compass-outline';
+      break;
+    case 'community':
+      iconName = focused ? 'account-group' : 'account-group-outline';
+      break;
+    case 'messages':
+      iconName = focused ? 'chat' : 'chat-outline';
+      break;
+    case 'profile':
+      iconName = focused ? 'account' : 'account-outline';
+      break;
+    default:
+      break;
+  }
 
-          return <MaterialCommunityIcons name={iconName} color={color} size={26} />;
-        },
-      })}
-    >
-      <Tabs.Screen name="discover" options={{ title: 'Discover' }} />
-      <Tabs.Screen name="community" options={{ title: 'Community' }} />
-      <Tabs.Screen name="messages" options={{ title: 'Messages' }} />
-      <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
-    </Tabs>
-  );
+  return <MaterialCommunityIcons name={iconName} color={color} size={26} />;
 };
+
+const TabsLayout = () => (
+  <Tabs
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color }) => getTabBarIcon(route, focused, color),
+    })}
+  >
+    <Tabs.Screen name="discover" options={{ title: 'Discover' }} />
+    <Tabs.Screen name="community" options={{ title: 'Community' }} />
+    <Tabs.Screen name="messages" options={{ title: 'Messages' }} />
+    <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
+  </Tabs>
+);
+
+export default TabsLayout;

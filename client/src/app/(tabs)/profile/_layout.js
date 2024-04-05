@@ -1,9 +1,9 @@
 import { Stack } from 'expo-router';
 
-export default () => {
-  return (
-    <Stack>
-      <Stack.Screen name="index" options={{ title: 'Profile' }} />
-    </Stack>
-  );
-};
+const ProfileLayout = () => (
+  <Stack>
+    <Stack.Screen name="index" options={{ title: 'Profile' }} />
+  </Stack>
+);
+
+export default ProfileLayout;
