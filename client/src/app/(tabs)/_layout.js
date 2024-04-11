@@ -1,6 +1,6 @@
 import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
 import { withLayoutContext } from 'expo-router';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Icon } from 'react-native-paper';
 
 const { Navigator } = createMaterialBottomTabNavigator();
 
@@ -26,7 +26,7 @@ const getTabBarIcon = (route, focused, color) => {
       break;
   }
 
-  return <MaterialCommunityIcons name={iconName} color={color} size={26} />;
+  return <Icon source={iconName} color={color} size={26} />;
 };
 
 const TabsLayout = () => (
@@ -34,6 +34,7 @@ const TabsLayout = () => (
     screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color }) => getTabBarIcon(route, focused, color),
     })}
+    shifting
   >
     <Tabs.Screen name="discover" options={{ title: 'Discover' }} />
     <Tabs.Screen name="community" options={{ title: 'Community' }} />

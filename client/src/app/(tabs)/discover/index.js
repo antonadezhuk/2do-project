@@ -1,9 +1,14 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { UserCardComponent } from '../../../components';
 
-const Discover = () => (
-  <View>
-    <Text>Discover screen</Text>
-  </View>
-);
+const Discover = () => {
+  const users = require('../../../mock/users.json');
+
+  return (
+    <View style={{ padding: 20, flex: 1 }}>
+      <UserCardComponent user={users[0]} />
+    </View>
+  );
+};
 
 export default Discover;

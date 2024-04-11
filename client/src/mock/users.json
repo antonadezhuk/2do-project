@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "email": "user1@test.com",
+    "first_name": "Mary",
+    "last_name": "Stanford",
+    "age": 31,
+    "gender": "FEMALE",
+    "distance": 200,
+    "tags": [
+      {
+        "id": 1,
+        "name": "Astronomy"
+      },
+      {
+        "id": 12,
+        "name": "Ice skating"
+      }
+    ],
+    "profile_pictures": [
+      {
+        "id": 1,
+        "file_path": "https://images.generated.photos/kRN-dvaY0EeXyO1dt-6DjUIDNQbvaHiPleHiI4PQjZ0/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/Nzg0NDU3LmpwZw.jpg"
+      },
+      {
+        "id": 2,
+        "file_path": "https://images.generated.photos/9E1WObfHuEup4fj9B3Uq6r1sl0FIe9mWyDXfsyXu4Zs/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wNzg0NDU3LnBu/Zw.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "email": "user2@test.com",
+    "first_name": "Alice",
+    "age": 24,
+    "gender": "FEMALE",
+    "distance": 500,
+    "tags": [
+      {
+        "id": 3,
+        "name": "Basketball"
+      },
+      {
+        "id": 8,
+        "name": "Dancing"
+      }
+    ],
+    "profile_pictures": [
+      {
+        "id": 3,
+        "file_path": "https://images.generated.photos/tWcaXxWaESMTdUiL-i71uBTCQaPuc-rbrTl_F6YPGY8/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wODY2ODM4LnBu/Zw.png"
+      },
+      {
+        "id": 4,
+        "file_path": "https://images.generated.photos/tWcaXxWaESMTdUiL-i71uBTCQaPuc-rbrTl_F6YPGY8/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wODY2ODM4LnBu/Zw.png"
+      }
+    ]
+  }
+]
