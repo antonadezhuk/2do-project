@@ -1,3 +1,1 @@
-import UserCardComponent from './UserCardComponent/UserCardComponent';
-
-export { UserCardComponent };
+export { default as UserCardComponent } from './UserCardComponent/UserCardComponent';

@@ -1,6 +1,10 @@
 import { Card as PaperCard } from 'react-native-paper';
 
-const Card = ({ children, ...rest }) => <PaperCard {...rest}>{children}</PaperCard>;
+const Card = ({ style, children, ...rest }) => (
+  <PaperCard style={[{ flex: 1, overflow: 'hidden' }, style]} {...rest}>
+    {children}
+  </PaperCard>
+);
 
 Card.Actions = ({ children, ...rest }) => (
   <PaperCard.Actions {...rest}>{children}</PaperCard.Actions>
@@ -10,7 +14,9 @@ Card.Content = ({ children, ...rest }) => (
   <PaperCard.Content {...rest}>{children}</PaperCard.Content>
 );
 
-Card.Cover = ({ source, ...rest }) => <PaperCard.Cover source={source} {...rest} />;
+Card.Cover = ({ style, source, ...rest }) => (
+  <PaperCard.Cover style={[{ borderRadius: 0 }, style]} source={source} {...rest} />
+);
 
 Card.Title = ({ title, subtitle, ...rest }) => (
   <PaperCard.Title title={title} subtitle={subtitle} {...rest} />

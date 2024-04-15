@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "Astronomy"
+  },
+  {
+    "id": 2,
+    "name": "Baseball"
+  },
+  {
+    "id": 3,
+    "name": "Basketball"
+  },
+  {
+    "id": 4,
+    "name": "Board games"
+  },
+  {
+    "id": 5,
+    "name": "Chess"
+  },
+  {
+    "id": 6,
+    "name": "Coding"
+  },
+  {
+    "id": 7,
+    "name": "Cooking"
+  },
+  {
+    "id": 8,
+    "name": "Dancing"
+  },
+  {
+    "id": 9,
+    "name": "Diving"
+  },
+  {
+    "id": 10,
+    "name": "Yoga"
+  },
+  {
+    "id": 11,
+    "name": "Singing"
+  },
+  {
+    "id": 12,
+    "name": "Ice skating"
+  },
+  {
+    "id": 13,
+    "name": "Meditation"
+  }
+]

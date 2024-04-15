@@ -1,15 +1,13 @@
-import { FlatList, ScrollView } from 'react-native';
-import { Icon } from 'react-native-paper';
-import { Button, Card, Chip, Text } from '../common';
-import styles from './styles';
+import { FlatList, ScrollView, Dimensions, StyleSheet } from 'react-native';
+import { Button, Card, Chip } from '../common';
 
 const UserCardComponent = ({ user }) => {
   const title = `${user.first_name}${user.last_name ? ` ${user.last_name}` : ''}, ${user.age}`;
 
   return (
-    <Card style={styles.card}>
+    <Card>
       <FlatList
-        style={styles.cardCoverList}
+        style={{ height: '75%' }}
         horizontal
         pagingEnabled
         data={user.profile_pictures}
@@ -17,23 +15,16 @@ const UserCardComponent = ({ user }) => {
           <Card.Cover style={styles.cardCover} source={{ uri: item.file_path }} />
         )}
       />
-      <Card.Title
-        title={title}
-        subtitle={
-          <Text>
-            <Icon source="map-marker-outline" size={22} /> {user.distance} meters away
-          </Text>
-        }
-      />
+      <Card.Title title={title} subtitle={`${user.distance} meters away`} />
       <Card.Content>
         <ScrollView
-          contentContainerStyle={styles.cardContentContainer}
+          contentContainerStyle={{ gap: 10 }}
           horizontal
           scrollEnabled={user.tags.length >= 3}
           showsHorizontalScrollIndicator={false}
         >
           {user.tags.map((tag) => (
-            <Chip key={tag.id} text={tag.name} />
+            <Chip key={tag.id} icon="tag-heart-outline" text={tag.name} />
           ))}
         </ScrollView>
       </Card.Content>
@@ -44,5 +35,12 @@ const UserCardComponent = ({ user }) => {
     </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  cardCover: {
+    width: Dimensions.get('window').width - 40,
+    height: '100%',
+  },
+});
 
 export default UserCardComponent;
