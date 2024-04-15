@@ -6,4 +6,8 @@ const Text = ({ variant, children, ...rest }) => (
   </PaperText>
 );
 
+Text.defaultProps = {
+  variant: 'titleMedium',
+};
+
 export default Text;

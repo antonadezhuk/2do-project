@@ -1,7 +1,7 @@
 import { Chip as PaperChip } from 'react-native-paper';
 
-const Chip = ({ text, icon, disabled, onPress, ...rest }) => (
-  <PaperChip icon={icon} onPress={onPress} disabled={disabled} {...rest}>
+const Chip = ({ text, icon, closeIcon, onPress, onClose, ...rest }) => (
+  <PaperChip icon={icon} closeIcon={closeIcon} onPress={onPress} onClose={onClose} {...rest}>
     {text}
   </PaperChip>
 );
