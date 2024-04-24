@@ -1,7 +1,8 @@
 import { FlatList, ScrollView, Dimensions, StyleSheet } from 'react-native';
 import { Button, Card, Chip } from '../common';
+import defaultStyles from '../../constants/styles';
 
-const UserCardComponent = ({ user }) => {
+const UserCardComponent = ({ user, onAdd, onSkip }) => {
   const title = `${user.first_name}${user.last_name ? ` ${user.last_name}` : ''}, ${user.age}`;
 
   return (
@@ -28,9 +29,9 @@ const UserCardComponent = ({ user }) => {
           ))}
         </ScrollView>
       </Card.Content>
-      <Card.Actions>
-        <Button text="Skip" icon="close" onPress={() => {}} />
-        <Button text="Add to connections" icon="account-plus" onPress={() => {}} />
+      <Card.Actions style={styles.cardActions}>
+        <Button style={styles.button} text="Skip" icon="close" onPress={onSkip} />
+        <Button style={styles.button} text="Add" icon="account-plus" onPress={onAdd} />
       </Card.Actions>
     </Card>
   );
@@ -38,8 +39,14 @@ const UserCardComponent = ({ user }) => {
 
 const styles = StyleSheet.create({
   cardCover: {
-    width: Dimensions.get('window').width - 40,
+    width: Dimensions.get('window').width - defaultStyles.screenContainer.padding * 2,
     height: '100%',
+  },
+  cardActions: {
+    paddingHorizontal: 10,
+  },
+  button: {
+    flex: 1,
   },
 });
 

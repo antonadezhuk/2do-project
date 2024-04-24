@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { View } from 'react-native';
 import { UserCardComponent } from '../../../components';
 import defaultStyles from '../../../constants/styles';
@@ -5,9 +6,19 @@ import defaultStyles from '../../../constants/styles';
 const Discover = () => {
   const users = require('../../../mock/users.json');
 
+  const [currentUserIndex, setCurrentUserIndex] = useState(0);
+
+  const addUser = () => {
+    setCurrentUserIndex((prevIndex) => (prevIndex + 1) % users.length);
+  };
+
+  const skipUser = () => {
+    setCurrentUserIndex((prevIndex) => (prevIndex + 1) % users.length);
+  };
+
   return (
-    <View style={defaultStyles.container}>
-      <UserCardComponent user={users[0]} />
+    <View style={defaultStyles.screenContainer}>
+      <UserCardComponent user={users[currentUserIndex]} onAdd={addUser} onSkip={skipUser} />
     </View>
   );
 };

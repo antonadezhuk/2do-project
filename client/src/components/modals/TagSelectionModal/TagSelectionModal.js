@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { FlatList } from 'react-native';
-import { Portal, Divider } from 'react-native-paper';
+import { Portal, Divider, ActivityIndicator } from 'react-native-paper';
 import { discoverySettingsState, tagsState } from '../../../state/atoms';
 import { Checkbox, ListItem, Modal } from '../../common';
 

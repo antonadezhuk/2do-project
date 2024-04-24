@@ -1,15 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { View, StyleSheet } from 'react-native';
-import { discoverySettingsState } from '../../../state/atoms';
-import { Text, Slider, Chip, Surface, Switch } from '../../../components/common';
+import { View, ScrollView, StyleSheet } from 'react-native';
+import { discoverySettingsState, tagsState } from '../../../state/atoms';
+import { Text, Slider, Chip, Surface, Switch, ActivityIndicator } from '../../../components/common';
 import { TagSelectionModal } from '../../../components/modals';
+import { fetchTags } from '../../../api/tagAPI';
 import defaultStyles from '../../../constants/styles';
 
 const Settings = () => {
   const [discoverySettings, setDiscoverySettings] = useRecoilState(discoverySettingsState);
+  const [tags, setTags] = useRecoilState(tagsState);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    if (tags.length === 0) {
+      setLoading(true);
+
+      fetchTags()
+        .then((data) => setTags(data))
+        .catch((err) => setError(err))
+        .finally(() => setLoading(false));
+    }
+  }, [setTags, tags.length]);
+
+  if (loading) {
+    return <ActivityIndicator />;
+  }
+
+  if (error) {
+    return <Text>{error}</Text>;
+  }
 
   const toggleGender = (gender) => {
     const oppositeGender = gender === 'men' ? 'women' : 'men';
@@ -51,7 +75,10 @@ const Settings = () => {
   };
 
   return (
-    <View style={[defaultStyles.container, { gap: 15 }]}>
+    <ScrollView
+      contentContainerStyle={defaultStyles.scrollScreenContainer}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={styles.section}>
         <View style={styles.row}>
           <Text>Show me:</Text>
@@ -137,7 +164,7 @@ const Settings = () => {
           <TagSelectionModal visible={modalVisible} onDismiss={() => setModalVisible(false)} />
         </Surface>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

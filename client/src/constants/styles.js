@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 const defaultStyles = StyleSheet.create({
-  container: {
+  screenContainer: {
     flex: 1,
-    padding: 20,
+    padding: 25,
+  },
+  scrollScreenContainer: {
+    padding: 25,
+    gap: 15,
   },
 });
 

@@ -1,10 +1,8 @@
 import { atom } from 'recoil';
 
-const tags = require('../../mock/tags.json');
-
 const tagsState = atom({
   key: 'tags',
-  default: tags,
+  default: [],
 });
 
 export default tagsState;
