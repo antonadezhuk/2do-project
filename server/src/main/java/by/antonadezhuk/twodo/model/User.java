@@ -1,29 +1,27 @@
-package by.antonadezhuk.twodo.models;
+package by.antonadezhuk.twodo.model;
 
-import by.antonadezhuk.twodo.utils.PointJsonDeserializer;
-import by.antonadezhuk.twodo.utils.PointJsonSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.*;
 import org.locationtech.jts.geom.Point;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "\"user\"")
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Builder
 public class User {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "email")
     @EqualsAndHashCode.Include
@@ -39,25 +37,22 @@ public class User {
     private String lastName;
 
     @Column(name = "date_of_birth")
-    @Temporal(TemporalType.DATE)
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Column(name = "location", columnDefinition = "geometry(POINT, 4326)")
-    @JsonSerialize(using = PointJsonSerializer.class)
-    @JsonDeserialize(using = PointJsonDeserializer.class)
     private Point location;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_tag",
+            name = "user_hobby",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
+            inverseJoinColumns = @JoinColumn(name = "hobby_id")
     )
-    private Set<Tag> tags;
+    private Set<Hobby> hobbies;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ProfilePicture> profilePictures;

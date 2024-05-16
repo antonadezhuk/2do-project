@@ -1,9 +1,9 @@
 import { View, StyleSheet } from 'react-native';
 import { ActivityIndicator as PaperActivityIndicator } from 'react-native-paper';
 
-const ActivityIndicator = ({ color, size, ...rest }) => (
+const ActivityIndicator = (props) => (
   <View style={styles.container}>
-    <PaperActivityIndicator color={color} size={size} {...rest} />
+    <PaperActivityIndicator {...props} />
   </View>
 );
 

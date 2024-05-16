@@ -18,9 +18,7 @@ Card.Cover = ({ style, source, ...rest }) => (
   <PaperCard.Cover style={[{ borderRadius: 0 }, style]} source={source} {...rest} />
 );
 
-Card.Title = ({ title, subtitle, ...rest }) => (
-  <PaperCard.Title title={title} subtitle={subtitle} {...rest} />
-);
+Card.Title = ({ title, ...rest }) => <PaperCard.Title title={title} {...rest} />;
 
 Card.Title.defaultProps = {
   titleVariant: 'titleLarge',

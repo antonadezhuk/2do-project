@@ -21,17 +21,25 @@ const UserCardComponent = ({ user, onAdd, onSkip }) => {
         <ScrollView
           contentContainerStyle={{ gap: 10 }}
           horizontal
-          scrollEnabled={user.tags.length >= 3}
+          scrollEnabled={user.hobbies.length > 3}
           showsHorizontalScrollIndicator={false}
         >
-          {user.tags.map((tag) => (
-            <Chip key={tag.id} icon="tag-heart-outline" text={tag.name} />
+          {user.hobbies.map((hobby) => (
+            <Chip
+              key={hobby.id}
+              icon={hobby.iconName ? hobby.iconName : 'tag-heart'}
+              text={hobby.name}
+            />
           ))}
         </ScrollView>
       </Card.Content>
-      <Card.Actions style={styles.cardActions}>
-        <Button style={styles.button} text="Skip" icon="close" onPress={onSkip} />
-        <Button style={styles.button} text="Add" icon="account-plus" onPress={onAdd} />
+      <Card.Actions>
+        <Button style={styles.button} icon="close" onPress={onSkip}>
+          Skip
+        </Button>
+        <Button style={styles.button} icon="account-plus" onPress={onAdd}>
+          Add
+        </Button>
       </Card.Actions>
     </Card>
   );
@@ -39,11 +47,8 @@ const UserCardComponent = ({ user, onAdd, onSkip }) => {
 
 const styles = StyleSheet.create({
   cardCover: {
-    width: Dimensions.get('window').width - defaultStyles.screenContainer.padding * 2,
+    width: Dimensions.get('window').width - defaultStyles.screen.padding * 2,
     height: '100%',
-  },
-  cardActions: {
-    paddingHorizontal: 10,
   },
   button: {
     flex: 1,

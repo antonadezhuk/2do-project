@@ -1,4 +1,4 @@
-package by.antonadezhuk.twodo.models;
+package by.antonadezhuk.twodo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,11 +9,13 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ProfilePicture {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "file_path")
     private String filePath;

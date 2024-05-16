@@ -1,9 +1,9 @@
-package by.antonadezhuk.twodo.models;
+package by.antonadezhuk.twodo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "connection_request")
@@ -11,15 +11,16 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ConnectionRequest {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "sent_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date sentAt;
+    private LocalDateTime sentAt;
 
     @ManyToOne
     @JoinColumn(name = "sender_id", referencedColumnName = "id")

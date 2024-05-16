@@ -17,7 +17,7 @@ const Discover = () => {
   };
 
   return (
-    <View style={defaultStyles.screenContainer}>
+    <View style={defaultStyles.screen}>
       <UserCardComponent user={users[currentUserIndex]} onAdd={addUser} onSkip={skipUser} />
     </View>
   );

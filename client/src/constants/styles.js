@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 const defaultStyles = StyleSheet.create({
-  screenContainer: {
+  screen: {
     flex: 1,
     padding: 25,
   },
-  scrollScreenContainer: {
-    padding: 25,
-    gap: 15,
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 

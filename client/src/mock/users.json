@@ -7,14 +7,16 @@
     "age": 31,
     "gender": "FEMALE",
     "distance": 200,
-    "tags": [
+    "hobbies": [
       {
         "id": 1,
-        "name": "Astronomy"
+        "name": "Aquarium keeping",
+        "iconName": "fishbowl"
       },
       {
-        "id": 12,
-        "name": "Ice skating"
+        "id": 2,
+        "name": "Archery",
+        "iconName": "bow-arrow"
       }
     ],
     "profile_pictures": [
@@ -35,14 +37,21 @@
     "age": 24,
     "gender": "FEMALE",
     "distance": 500,
-    "tags": [
+    "hobbies": [
       {
-        "id": 3,
-        "name": "Basketball"
+        "id": 7,
+        "name": "Biking",
+        "iconName": "bike"
       },
       {
         "id": 8,
-        "name": "Dancing"
+        "name": "Billiards",
+        "iconName": "billiards"
+      },
+      {
+        "id": 9,
+        "name": "Birding",
+        "iconName": "bird"
       }
     ],
     "profile_pictures": [

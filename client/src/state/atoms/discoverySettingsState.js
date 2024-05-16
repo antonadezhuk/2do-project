@@ -7,7 +7,7 @@ const discoverySettingsState = atom({
     distance: 5,
     minimumAge: 16,
     maximumAge: 100,
-    tags: [],
+    hobbies: [],
   },
 });
 

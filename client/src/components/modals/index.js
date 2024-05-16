@@ -1,1 +1,1 @@
-export { default as TagSelectionModal } from './TagSelectionModal/TagSelectionModal';
+export { default as HobbySelectionModal } from './HobbySelectionModal/HobbySelectionModal';

@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { View, ScrollView, StyleSheet } from 'react-native';
-import { discoverySettingsState, tagsState } from '../../../state/atoms';
+import { discoverySettingsState, hobbiesState } from '../../../state/atoms';
 import { Text, Slider, Chip, Surface, Switch, ActivityIndicator } from '../../../components/common';
-import { TagSelectionModal } from '../../../components/modals';
-import { fetchTags } from '../../../api/tagAPI';
+import { HobbySelectionModal } from '../../../components/modals';
+import { fetchHobbies } from '../../../api/hobbyAPI';
 import defaultStyles from '../../../constants/styles';
 
 const Settings = () => {
   const [discoverySettings, setDiscoverySettings] = useRecoilState(discoverySettingsState);
-  const [tags, setTags] = useRecoilState(tagsState);
+  const [hobbies, setHobbies] = useRecoilState(hobbiesState);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -17,15 +17,15 @@ const Settings = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    if (tags.length === 0) {
+    if (hobbies.length === 0) {
       setLoading(true);
 
-      fetchTags()
-        .then((data) => setTags(data))
+      fetchHobbies()
+        .then((data) => setHobbies(data))
         .catch((err) => setError(err))
         .finally(() => setLoading(false));
     }
-  }, [setTags, tags.length]);
+  }, [setHobbies, hobbies.length]);
 
   if (loading) {
     return <ActivityIndicator />;
@@ -67,34 +67,31 @@ const Settings = () => {
     }));
   };
 
-  const removeTag = (id) => {
+  const removeHobby = (id) => {
     setDiscoverySettings((prevSettings) => ({
       ...prevSettings,
-      tags: prevSettings.tags.filter((tag) => tag.id !== id),
+      hobbies: prevSettings.hobbies.filter((hobby) => hobby.id !== id),
     }));
   };
 
   return (
-    <ScrollView
-      contentContainerStyle={defaultStyles.scrollScreenContainer}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollView contentContainerStyle={styles.screen} showsVerticalScrollIndicator={false}>
       <View style={styles.section}>
-        <View style={styles.row}>
+        <View style={defaultStyles.row}>
           <Text>Show me:</Text>
           <Text>
             {discoverySettings.gender.charAt(0).toUpperCase() + discoverySettings.gender.slice(1)}
           </Text>
         </View>
         <Surface style={{ paddingVertical: 0 }}>
-          <View style={styles.row}>
+          <View style={defaultStyles.row}>
             <Text variant="bodyMedium">Men</Text>
             <Switch
               value={discoverySettings.gender === 'men' || discoverySettings.gender === 'all'}
               onValueChange={() => toggleGender('men')}
             />
           </View>
-          <View style={styles.row}>
+          <View style={defaultStyles.row}>
             <Text variant="bodyMedium">Women</Text>
             <Switch
               value={discoverySettings.gender === 'women' || discoverySettings.gender === 'all'}
@@ -104,7 +101,7 @@ const Settings = () => {
         </Surface>
       </View>
       <View style={styles.section}>
-        <View style={styles.row}>
+        <View style={defaultStyles.row}>
           <Text>Search distance:</Text>
           <Text>{discoverySettings.distance} km</Text>
         </View>
@@ -119,7 +116,7 @@ const Settings = () => {
         </Surface>
       </View>
       <View style={styles.section}>
-        <View style={styles.row}>
+        <View style={defaultStyles.row}>
           <Text>Minimum age:</Text>
           <Text>{discoverySettings.minimumAge} years</Text>
         </View>
@@ -134,7 +131,7 @@ const Settings = () => {
         </Surface>
       </View>
       <View style={styles.section}>
-        <View style={styles.row}>
+        <View style={defaultStyles.row}>
           <Text>Maximum age:</Text>
           <Text>{discoverySettings.maximumAge} years</Text>
         </View>
@@ -149,19 +146,19 @@ const Settings = () => {
         </Surface>
       </View>
       <View style={styles.section}>
-        <Text>Tags:</Text>
+        <Text>Hobbies:</Text>
         <Surface style={styles.wrap}>
-          {discoverySettings.tags.map((tag) => (
+          {discoverySettings.hobbies.map((hobby) => (
             <Chip
-              key={tag.id}
-              icon="tag-outline"
-              text={tag.name}
+              key={hobby.id}
+              icon={hobby.iconName ? hobby.iconName : 'tag-heart'}
+              text={hobby.name}
               closeIcon="close"
-              onClose={() => removeTag(tag.id)}
+              onClose={() => removeHobby(hobby.id)}
             />
           ))}
           <Chip icon="tag-plus-outline" text="More..." onPress={() => setModalVisible(true)} />
-          <TagSelectionModal visible={modalVisible} onDismiss={() => setModalVisible(false)} />
+          <HobbySelectionModal visible={modalVisible} onDismiss={() => setModalVisible(false)} />
         </Surface>
       </View>
     </ScrollView>
@@ -169,13 +166,12 @@ const Settings = () => {
 };
 
 const styles = StyleSheet.create({
+  screen: {
+    padding: defaultStyles.screen.padding,
+    gap: 15,
+  },
   section: {
     gap: 5,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   wrap: {
     flexDirection: 'row',

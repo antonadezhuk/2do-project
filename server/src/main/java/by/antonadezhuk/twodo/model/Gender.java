@@ -1,7 +1,7 @@
-package by.antonadezhuk.twodo.models;
+package by.antonadezhuk.twodo.model;
 
 public enum Gender {
     MALE,
     FEMALE,
-    OTHER
+    ALL
 }
